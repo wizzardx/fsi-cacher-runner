@@ -57,10 +57,11 @@ jobs:
       if: matrix.os == 'windows-latest'
       shell: wsl-bash {0}
       run: |
-        cd ${{ github.workspace }}  # Use the github context directly
+        WORKSPACE_PATH="/mnt/d/a/fsi-cacher-runner/fsi-cacher-runner"
+        cd "$WORKSPACE_PATH"
         chmod +x fsi
         chmod +x test_fsi.fsx
-        pwd >> $GITHUB_PATH  # Use pwd instead of GITHUB_WORKSPACE
+        pwd >> $GITHUB_PATH
 
     - name: Run tests
       if: matrix.os != 'windows-latest'
