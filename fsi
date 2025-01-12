@@ -43,6 +43,12 @@ chmod 755 "$cache_base" "$mono_cache" "$dotnet_cache"
 if [ $have_fsharpc -eq 1 ]; then
     # Use faster Mono implementation
     cache_name=$(echo "$script_path" | md5sum | cut -d' ' -f1)
+    if command -v md5sum >/dev/null 2>&1; then
+        cache_name=$(echo "$script_path" | md5sum | cut -d' ' -f1)
+    else
+        # macOS uses md5 instead of md5sum
+        cache_name=$(echo "$script_path" | md5 -q)
+    fi
     cached_binary="$mono_cache/$cache_name.exe"
 
     rebuild=0
@@ -65,7 +71,12 @@ if [ $have_fsharpc -eq 1 ]; then
 elif [ $have_dotnet -eq 1 ]; then
     # Fall back to .NET Core
     dotnet_version=$(dotnet --version | cut -d. -f1,2)
-    cache_name=$(echo "$script_path-$dotnet_version" | md5sum | cut -d' ' -f1)
+    if command -v md5sum >/dev/null 2>&1; then
+        cache_name=$(echo "$script_path-$dotnet_version" | md5sum | cut -d' ' -f1)
+    else
+        # macOS uses md5 instead of md5sum
+        cache_name=$(echo "$script_path-$dotnet_version" | md5 -q)
+    fi
     cached_dll="$dotnet_cache/$cache_name.dll"
 
     rebuild=0
