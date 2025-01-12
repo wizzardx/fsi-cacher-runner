@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        # We can expand this later to include: macos-latest, windows-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -24,16 +23,17 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Setup Mono/F#
-      if: matrix.os != 'windows-latest'  # Mono not needed on Windows
+      if: matrix.os != 'windows-latest'
       run: |
         sudo apt-get update
         sudo apt-get install -y fsharp
 
-    - name: Make scripts executable
+    - name: Make scripts executable and add to PATH
       if: matrix.os != 'windows-latest'
       run: |
         chmod +x fsi
         chmod +x test_fsi.fsx
+        echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
 
     - name: Run tests
       run: ./test_fsi.fsx
