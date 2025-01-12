@@ -62,9 +62,22 @@
     - [ ] macOS ARM (M1/M2)
   - [ ] Windows
     - [ ] Windows WSL2 (Ubuntu)
+      - [ ] Test basic script execution
+      - [ ] Verify cache directory paths
+      - [ ] Ensure md5/md5sum compatibility
+      - [ ] Test .NET and Mono detection/execution
     - [ ] Windows WSL2 (Debian)
     - [ ] Native Windows with PowerShell
+      - [ ] Create PowerShell implementation (fsi.ps1)
+      - [ ] Cache directory management
+      - [ ] Hash computation equivalent
+      - [ ] Runtime detection (.NET/Mono)
+      - [ ] Path handling and normalization
     - [ ] Windows with Git Bash
+    - [ ] Additional Windows support
+      - [ ] Create CMD implementation (fsi.cmd)
+      - [ ] Decide on PowerShell dependency vs standalone
+      - [ ] Handle environment setup
 - [ ] Add automated release process
 - [ ] Add code quality checks
 
