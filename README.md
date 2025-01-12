@@ -12,7 +12,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/fsi-cacher-runner.git
+   git clone https://github.com/wizzardx/fsi-cacher-runner.git
    cd fsi-cacher-runner
    ```
 
@@ -31,7 +31,7 @@
 1. Create an F# script, for example, `test.fsx`:
    ```fsharp
    #!/usr/bin/env fsi
-   printfn "Hello, world! Again!"
+   printfn "Hello, world!"
    ```
 
 2. Make your script executable:
