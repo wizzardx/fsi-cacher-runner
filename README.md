@@ -81,6 +81,22 @@ Cached execution times:
 - Mono/F#: ~30-50ms
 - .NET Core: ~200-250ms
 
+## Benchmark Environment
+
+These performance numbers were measured on the following system:
+
+- **CPU**: Intel Core i7-8750H @ 2.20GHz (6 cores/12 threads)
+- **RAM**: 16GB
+- **Storage**: NVMe SSD
+- **OS**: Ubuntu 24.04.1 LTS (64-bit)
+- **Runtime Versions**:
+  - **.NET**: 8.0.404
+  - **Mono**: 6.8.0.105
+  - **F#**: 4.0 (Open Source Edition)
+
+Note: Your performance may vary depending on your system specifications and installed runtime versions.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
