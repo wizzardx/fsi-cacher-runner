@@ -61,6 +61,7 @@ jobs:
         cd "$WORKSPACE_PATH"
         chmod +x fsi
         chmod +x test_fsi.fsx
+        echo "$WORKSPACE_PATH" >> $GITHUB_WORKSPACE/GITHUB_PATH
 
     - name: Run tests
       if: matrix.os != 'windows-latest'
