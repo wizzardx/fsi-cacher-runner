@@ -42,7 +42,6 @@ chmod 755 "$cache_base" "$mono_cache" "$dotnet_cache"
 
 if [ $have_fsharpc -eq 1 ]; then
     # Use faster Mono implementation
-    cache_name=$(echo "$script_path" | md5sum | cut -d' ' -f1)
     if command -v md5sum >/dev/null 2>&1; then
         cache_name=$(echo "$script_path" | md5sum | cut -d' ' -f1)
     else
