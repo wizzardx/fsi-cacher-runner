@@ -8,6 +8,15 @@
 - [ ] Test with various command line argument patterns
 - [ ] Test scripts that read/write files
 - [ ] Test scripts with different working directories
+- [ ] Platform-specific test cases
+  - [ ] Test path separators (/ vs \) handling
+  - [ ] Test file permissions across platforms
+  - [ ] Test file locks and concurrent access
+  - [ ] Test temp directory handling
+  - [ ] Test script execution with spaces in paths
+  - [ ] Test long path handling
+  - [ ] Test case sensitivity issues
+  - [ ] Test newline handling (CRLF vs LF)
 
 ### Cross-Platform Testing
 - [ ] Test on Windows WSL
@@ -48,7 +57,7 @@
     - [ ] Arch Linux
     - [ ] Alpine Linux (minimal environment test)
   - [ ] macOS
-    - [ ] macOS Latest (GitHub Actions)
+    - [x] macOS Latest (GitHub Actions) ✅ 2025-01-12
     - [ ] macOS Intel
     - [ ] macOS ARM (M1/M2)
   - [ ] Windows
