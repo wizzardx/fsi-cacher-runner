@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -22,11 +22,16 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Setup Mono/F#
-      if: matrix.os != 'windows-latest'
+    - name: Setup Mono/F# (Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
         sudo apt-get install -y fsharp
+
+    - name: Setup Mono/F# (macOS)
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install mono
 
     - name: Make scripts executable and add to PATH
       if: matrix.os != 'windows-latest'
