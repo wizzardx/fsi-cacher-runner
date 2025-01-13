@@ -9,35 +9,46 @@
 - **Performance Optimized**: Achieves optimal execution times based on available runtime
 - **Automatic Caching**: Compiles and caches scripts for faster subsequent runs
 - **Change Detection**: Automatically recompiles when scripts are modified
-- **Cross-Platform**: Works on Linux, macOS, and Windows (with compatible shell)
+- **Cross-Platform**: Works on Linux, macOS, and Windows (via WSL)
+- **CI/CD Verified**: Automated testing on Ubuntu, macOS, and Windows/WSL
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/wizzardx/fsi-cacher-runner.git
-   cd fsi-cacher-runner
-   ```
+### Linux (Ubuntu/Debian)
+```bash
+git clone https://github.com/wizzardx/fsi-cacher-runner.git
+cd fsi-cacher-runner
+chmod +x fsi
+sudo mv fsi /usr/local/bin/fsi
+sudo apt install fsharp  # For Mono/F# (faster execution times)
+```
 
-2. Make the `fsi` script executable:
-   ```bash
-   chmod +x fsi
-   ```
+### macOS
+```bash
+git clone https://github.com/wizzardx/fsi-cacher-runner.git
+cd fsi-cacher-runner
+chmod +x fsi
+sudo mv fsi /usr/local/bin/fsi
+brew install mono  # For Mono/F# (faster execution times)
+```
 
-3. Move it to a directory in your `PATH` (e.g., `/usr/local/bin`):
-   ```bash
-   mv fsi /usr/local/bin/fsi
-   ```
+### Windows (WSL)
+1. Install WSL if you haven't already:
+```powershell
+wsl --install Ubuntu
+```
 
-4. Install either (or both) F# runtime:
-   ```bash
-   # Mono/F# (faster execution times):
-   sudo apt install fsharp  # Ubuntu/Debian
-   brew install mono        # macOS with Homebrew
+2. Inside WSL Ubuntu terminal:
+```bash
+git clone https://github.com/wizzardx/fsi-cacher-runner.git
+cd fsi-cacher-runner
+chmod +x fsi
+sudo mv fsi /usr/local/bin/fsi
+sudo apt update
+sudo apt install -y fsharp  # For Mono/F# (faster execution times)
+```
 
-   # .NET Core:
-   # Install from https://dot.net
-   ```
+For all platforms, you can alternatively install .NET Core from https://dot.net
 
 ## Usage
 
