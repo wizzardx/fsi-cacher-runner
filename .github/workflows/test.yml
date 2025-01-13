@@ -17,15 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Fix line endings (WSL)
-      if: matrix.os == 'windows-latest'
-      shell: wsl-bash {0}
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y dos2unix
-        dos2unix fsi
-        dos2unix test_fsi.fsx
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -36,6 +27,15 @@ jobs:
       uses: Vampire/setup-wsl@v2
       with:
         distribution: Ubuntu-22.04
+
+    - name: Fix line endings (WSL)
+      if: matrix.os == 'windows-latest'
+      shell: wsl-bash {0}
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y dos2unix
+        dos2unix fsi
+        dos2unix test_fsi.fsx
 
     - name: Setup Mono/F# (Ubuntu)
       if: matrix.os == 'ubuntu-latest'
