@@ -20,6 +20,32 @@
   - [ ] Cache behavior verification
   - [ ] Runtime detection logic
 
+### Test Framework Strategy
+- [ ] Current Custom Framework
+  - [ ] Document current test framework design and features
+  - [ ] Ensure framework remains modular and replaceable
+  - [ ] Consider extracting to separate F# package if generally useful
+- [ ] Future Framework Evaluation
+  - [ ] Evaluate existing F# test frameworks
+    - [ ] Expecto (F# native, property-based testing)
+    - [ ] FsUnit (NUnit wrapper)
+    - [ ] xUnit.net (Popular .NET option)
+    - [ ] NUnit (Classic option)
+    - [ ] Unquote (F# assertions)
+  - [ ] Document framework comparison results
+  - [ ] Migration plan if needed
+
+### Test Output Improvements
+- [x] Basic progress display ✅ 2025-01-13
+- [ ] Cross-platform output handling
+  - [ ] Windows console support
+  - [ ] CI-friendly output
+  - [ ] Terminal capability detection
+- [ ] Optional fancy output features
+  - [ ] Progress spinner (when supported)
+  - [ ] Color output (when supported)
+  - [ ] Unicode symbols (when supported)
+
 ### Performance Verification
 - [ ] Add benchmark tests to verify documented speeds
   - [ ] Mono/F# (30-50ms claim)
