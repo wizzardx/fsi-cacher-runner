@@ -14,7 +14,7 @@
 
 ### Comprehensive Test Suite
 - [ ] Update test_fsi.fsx with core scenarios
-  - [ ] Basic execution with different argument patterns
+  - [x] Basic execution with different argument patterns ✅ 2025-01-13
   - [ ] Error handling (malformed scripts, missing deps)
   - [ ] File path edge cases (spaces, special chars)
   - [ ] Cache behavior verification
