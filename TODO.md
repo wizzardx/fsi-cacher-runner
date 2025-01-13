@@ -1,108 +1,85 @@
 # TODO List for FSI Cacher Runner
 
-## Testing
+## Phase 1 - Core Testing (Pre-Reddit Announcement)
 
-### Basic Error Scenarios
-- [ ] Test with malformed F# scripts (syntax errors)
-- [ ] Test with missing dependencies in scripts
-- [ ] Test with various command line argument patterns
-- [ ] Test scripts that read/write files
-- [ ] Test scripts with different working directories
-- [ ] Platform-specific test cases
-  - [ ] Test path separators (/ vs \) handling
-  - [ ] Test file permissions across platforms
-  - [ ] Test file locks and concurrent access
-  - [ ] Test temp directory handling
-  - [ ] Test script execution with spaces in paths
-  - [ ] Test long path handling
-  - [ ] Test case sensitivity issues
-  - [ ] Test newline handling (CRLF vs LF)
-
-### Cross-Platform Testing
-- [ ] Test on Windows WSL
-- [ ] Test on macOS
-- [ ] Test on different Linux distributions (Ubuntu, Fedora, etc.)
-- [ ] Document any platform-specific issues or requirements
-
-### Advanced F# Scenarios
-- [ ] Test scripts that reference external F# libraries
-- [ ] Test scripts with F# interactive directives (#r, #load)
-- [ ] Test performance with larger scripts (1000+ lines)
-- [ ] Test scripts that use F# type providers
-- [ ] Test scripts with different encoding types (UTF-8, ASCII, etc.)
-
-## Documentation
-
-### Error Handling Documentation
-- [ ] Document common error messages and their solutions
-- [ ] Add a troubleshooting section to README
-- [ ] Document known limitations
-- [ ] Add examples of error scenarios and how to resolve them
-
-### Usage Examples
-- [ ] Add more complex script examples
-- [ ] Document performance tips
-- [ ] Add examples of using external dependencies
-- [ ] Document cache management and cleanup
-
-## Development Infrastructure
-
-### CI/CD Setup
+### CI/CD Infrastructure
 - [x] Set up basic GitHub Actions workflow ✅ 2025-01-12
-- [ ] Add automated testing across different environments
-  - [x] Ubuntu Latest (GitHub Actions) ✅ 2025-01-12
-  - [ ] Other Linux distributions
-    - [ ] Fedora Latest
-    - [ ] Debian Stable
-    - [ ] Arch Linux
-    - [ ] Alpine Linux (minimal environment test)
-  - [ ] macOS
-    - [x] macOS Latest (GitHub Actions) ✅ 2025-01-12
-    - [ ] macOS Intel
-    - [ ] macOS ARM (M1/M2)
-  - [ ] Windows
-    - [ ] Windows WSL2 (Ubuntu)
-      - [ ] Test basic script execution
-      - [ ] Verify cache directory paths
-      - [ ] Ensure md5/md5sum compatibility
-      - [ ] Test .NET and Mono detection/execution
-    - [ ] Windows WSL2 (Debian)
-    - [ ] Native Windows with PowerShell
-      - [ ] Create PowerShell implementation (fsi.ps1)
-      - [ ] Cache directory management
-      - [ ] Hash computation equivalent
-      - [ ] Runtime detection (.NET/Mono)
-      - [ ] Path handling and normalization
-    - [ ] Windows with Git Bash
-    - [ ] Additional Windows support
-      - [ ] Create CMD implementation (fsi.cmd)
-      - [ ] Decide on PowerShell dependency vs standalone
-      - [ ] Handle environment setup
-- [ ] Add automated release process
-- [ ] Add code quality checks
+- [x] Ubuntu Latest (GitHub Actions) ✅ 2025-01-12
+- [x] macOS Latest (GitHub Actions) ✅ 2025-01-12
+- [x] Windows WSL2 (Ubuntu) Support ✅ 2025-01-13
+  - [x] Basic script execution ✅ 2025-01-13
+  - [x] Cache directory paths ✅ 2025-01-13
+  - [x] md5/md5sum compatibility ✅ 2025-01-13
+  - [x] .NET and Mono detection/execution ✅ 2025-01-13
 
-### Code Improvements
-- [ ] Add verbose mode for debugging
-- [ ] Improve error messages
-- [ ] Add cache size management
-- [ ] Consider adding configuration options
+### Comprehensive Test Suite
+- [ ] Update test_fsi.fsx with core scenarios
+  - [ ] Basic execution with different argument patterns
+  - [ ] Error handling (malformed scripts, missing deps)
+  - [ ] File path edge cases (spaces, special chars)
+  - [ ] Cache behavior verification
+  - [ ] Runtime detection logic
 
-## Community Engagement
+### Performance Verification
+- [ ] Add benchmark tests to verify documented speeds
+  - [ ] Mono/F# (30-50ms claim)
+  - [ ] .NET Core (200-250ms claim)
+  - [ ] First-run compilation times
+- [ ] Update README.md with verified numbers
 
-### Pre-Release Tasks
+### Documentation Updates
+- [ ] Add "Known Issues" section to README.md
+- [ ] Add "Limitations" section
+- [ ] Document WSL-specific considerations
+- [ ] Add real-world usage examples
+- [ ] Document cache location and management
+- [ ] Verify all installation instructions
+
+### Basic Cache Management
+- [ ] Implement cache size limits
+- [ ] Add cache statistics command
+- [ ] Document cache cleanup procedures
+
+## Phase 2 - Community Launch
+
+### Reddit Announcement Preparation
 - [ ] Create comprehensive release notes
 - [ ] Prepare r/fsharp post draft
-- [ ] Create example repository showcasing different use cases
-- [ ] Document comparison with existing tools (if found)
+- [ ] Create example repository
+- [ ] Document comparison with alternatives
 
-### Post-Release Monitoring
+### Post-Launch Monitoring
 - [ ] Monitor GitHub issues
 - [ ] Track community feedback
-- [ ] Document common questions and answers
-- [ ] Plan future improvements based on feedback
+- [ ] Document FAQs based on initial questions
+- [ ] Plan improvements based on feedback
+
+## Phase 3 - Platform Expansion
+
+### Additional Linux Support
+- [ ] Fedora Latest
+- [ ] Debian Stable
+- [ ] Arch Linux
+- [ ] Alpine Linux (minimal environment test)
+
+### Extended macOS Support
+- [ ] macOS Intel verification
+- [ ] macOS ARM (M1/M2) testing
+
+### Windows Native Support
+- [ ] PowerShell Implementation
+  - [ ] Create fsi.ps1
+  - [ ] Cache directory management
+  - [ ] Hash computation equivalent
+  - [ ] Runtime detection (.NET/Mono)
+  - [ ] Path handling and normalization
+- [ ] Windows with Git Bash
+- [ ] CMD Implementation
+  - [ ] Create fsi.cmd
+  - [ ] Decide on PowerShell dependency
 
 ## Future Considerations
-- [ ] Consider integration with existing F# tooling
-- [ ] Investigate potential performance optimizations
-- [ ] Consider adding support for script dependencies tracking
-- [ ] Evaluate need for configuration file support
+- [ ] Integration with existing F# tooling
+- [ ] Advanced performance optimizations
+- [ ] Script dependencies tracking
+- [ ] Configuration file support
