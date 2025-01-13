@@ -38,16 +38,18 @@ let runTestScript (name: string) (content: string) (args: string list) =
     psi.FileName <- "./fsi"
     psi.Arguments <- sprintf "%s %s" scriptPath (String.concat " " escapedArgs)
     psi.RedirectStandardOutput <- true
+    psi.RedirectStandardError <- true
     psi.UseShellExecute <- false
     let p = System.Diagnostics.Process.Start(psi)
     let output = p.StandardOutput.ReadToEnd()
+    let error = p.StandardError.ReadToEnd()
     p.WaitForExit()
     
     // Cleanup
     System.IO.File.Delete(scriptPath)
     
-    // Return exit code and output
-    (p.ExitCode, output)
+    // Return exit code and combined output
+    (p.ExitCode, output + error)
 
 // Define test functions
 let basicExecutionTest() = ()  // If we got here, we're running!
@@ -142,12 +144,14 @@ let tests = [|
 let runTest (testCase: TestCase) =
     if testCase.Skip then
         printfn "[SKIP] %s" testCase.Description
-        ()
     else
-        printf "[%d/%d] %s " (!passCount + !failCount + 1) (tests |> Array.filter (fun t -> not t.Skip) |> Array.length) testCase.Description
+        let current = !passCount + !failCount + 1
+        let total = tests |> Array.filter (fun t -> not t.Skip) |> Array.length
+        printf "[%d/%d] %s " current total testCase.Description
         
         // Buffer for capturing test output
         let mutable testOutput = ""
+        let success = ref true
         try
             // Capture output
             use writer = new System.IO.StringWriter()
@@ -163,9 +167,9 @@ let runTest (testCase: TestCase) =
                 System.Console.SetError(originalError)
                 testOutput <- writer.ToString()
                 incr passCount
-                printfn "✓"
             with e ->
                 // Test failed
+                success := false
                 System.Console.SetOut(originalOut)
                 System.Console.SetError(originalError)
                 testOutput <- writer.ToString()
@@ -178,6 +182,8 @@ let runTest (testCase: TestCase) =
         finally
             System.Console.SetOut(System.Console.Out)
             System.Console.SetError(System.Console.Error)
+            if !success then
+                printfn "✓"
 
 // Run all tests
 tests |> Array.iter runTest
