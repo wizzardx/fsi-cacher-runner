@@ -83,3 +83,28 @@
 - [ ] Advanced performance optimizations
 - [ ] Script dependencies tracking
 - [ ] Configuration file support
+- [ ] Comprehensive Runtime Testing
+  - [ ] Test matrix across F# implementations
+    - [ ] Mono F# (versions: latest, LTS)
+    - [ ] .NET Core F# (versions: latest, LTS)
+  - [ ] Feature compatibility testing
+    - [ ] Document minimum F# version requirements
+    - [ ] Test for F# version-specific features
+    - [ ] Add feature detection where needed
+  - [ ] Error handling consistency
+    - [ ] Verify error messages across implementations
+    - [ ] Document implementation-specific differences
+- [ ] Runtime Configuration Testing
+  - [ ] Environment Variables
+    - [ ] F# specific variables
+    - [ ] .NET runtime variables
+    - [ ] Mono runtime variables
+  - [ ] Runtime Flags
+    - [ ] Optimization levels
+    - [ ] Memory limits
+    - [ ] Debug/verbose modes
+    - [ ] Assembly loading paths
+  - [ ] Document supported configurations
+    - [ ] Required/optional settings
+    - [ ] Default values
+    - [ ] Performance implications
